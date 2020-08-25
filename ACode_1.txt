@@ -1,0 +1,28 @@
+from cv2 import cv2
+
+cap1 = cv2.VideoCapture('res/1_30_10fps.avi')
+cap2 = cv2.VideoCapture('res/2_30_10fps.avi')
+
+fcc = cv2.VideoWriter_fourcc('X','V','I','D')
+out = cv2.VideoWriter('result/A01.avi',fcc,10.0,(400, 200))
+
+while True:
+    ret1, frame1 = cap1.read()
+    frame1 = cv2.cvtColor(frame1, 1)
+
+    ret2, frame2 = cap2.read()
+    frame2 = cv2.cvtColor(frame2, 1)
+    
+    cv2.imshow('Frame1', frame1)
+    cv2.imshow('Frame2', frame2)
+    
+    out.write(frame1)
+    out.write(frame2)
+
+    if cv2.waitKey(1) == 27:
+        break
+
+cap1.release()
+cap2.release()
+out.release()
+cv2.destroyAllWindows()
