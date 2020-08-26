@@ -21,7 +21,6 @@ while True:
 
     if cv2.waitKey(1) == 27:
         break
-
 cap1.release()
 cap2.release()
 out.release()
